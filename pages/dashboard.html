@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard | DLGI Motors</title>
+
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="logo">
+        <a href="../index.html"><img class="logo11" src="../Images/DLGILOGO.jpeg"></a>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="dashboard.html" class="active">მთავარი</a></li>
+          <li><a href="#" onclick="logoutUser()">გამოსვლა</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- DASHBOARD SECTION -->
+<main class="dashboard-section">
+  <div class="dashboard-container">
+
+    <!-- User Info + Image -->
+    <div class="user-info-container">
+      <div class="user-image">
+        <img src="../Images/photo11.jpg" alt="car image">
+      </div>
+      <div class="user-info">
+        <h2>შენი ავტომობილის ინფორმაცია</h2>
+        <p id="carNum"></p>
+        <p id="brandModel"></p>
+        <p id="engineFuel"></p>
+        <p id="year"></p>
+      </div>
+    </div>
+
+    <!-- Call Us Form -->
+    <div class="callus-form">
+      <h2>გამოგვიძახე</h2>
+      <form id="callForm">
+        <textarea placeholder="შეიყვანეთ მანქანის პრობლემა" rows="4" required></textarea>
+
+        <!-- Date as text input -->
+        <label for="date">როდის გინდა ვიზიტი:</label>
+        <input type="text" id="date" name="date" placeholder="რიცხვი" required>
+
+        <!-- Time as text input -->
+        <label for="time">საათი:</label>
+        <input type="text" id="time" name="time" placeholder="საათი" required>
+
+        <!-- Location -->
+        <label for="location">ადგილმდებარეობა / მისამართი:</label>
+        <input type="text" id="location" name="location" placeholder="შეიყვანეთ თქვენი მისამართი" required>
+
+        <button type="submit">გამოგვიძახე</button>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-col">
+        <h4>კომპანია</h4>
+        <ul>
+          <li><a href="../pages/aboutus.html">ჩვენს შესახებ</a></li>
+          <li><a href="../pages/Services.html">სერვისები</a></li>
+          <li><a href="../pages/callus.html">გამოგვიძახე</a></li>
+          <li><a href="../pages/Contact.html">კონტაქტი</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>გამოგვყევით</h4>
+        <div class="social-links">
+          <a href="https://www.facebook.com/DlgiGroupMotors"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/dlgigroupmotors/"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@dlgigroupmotors?lang=en-GB"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// User welcome and car info
+window.onload = function() {
+  if(localStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "auth.html";
+  } else {
+    const user = JSON.parse(localStorage.getItem("user"));
+    document.getElementById("carNum").textContent = "მანქანის ნომერი: " + user.carNum;
+    document.getElementById("brandModel").textContent = "მარკა/მოდელი: " + user.brand + " " + user.model;
+    document.getElementById("engineFuel").textContent = "ძრავი: " + user.engine + " ლ, საწვავი: " + user.fuel;
+    document.getElementById("year").textContent = "წელი: " + user.year;
+  }
+};
+
+// Logout
+function logoutUser() {
+  localStorage.removeItem("loggedIn");
+  window.location.href = "auth.html";
+}
+
+// Form submission
+const form = document.getElementById('callForm');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const problem = form[0].value;
+  const date = form.date.value;
+  const time = form.time.value;
+  const location = form.location.value;
+
+  alert(`მონაცემები შენახულია:\nპრობლემა: ${problem}\nთარიღი: ${date}\nსაათი: ${time}\nმისამართი: ${location}`);
+});
+</script>
+
+</body>
+</html>

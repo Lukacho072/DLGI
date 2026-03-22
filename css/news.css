@@ -1,0 +1,205 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+    max-width: 1170px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ================= HEADER ================= */
+.header {
+    background-color: #093d7b;
+    padding: 15px 0;
+}
+
+.logo11 {
+    width: 100px;
+    border-radius: 50%;
+    height: auto;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav ul li a {
+    color: #bbb;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav ul li a.active,
+.nav ul li a:hover {
+    color: #f3a93d;
+}
+
+/* ================= VIDEOS SECTION ================= */
+.videos-section {
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 30px; /* პატარა დაშორება თავზე */
+}
+
+.section-title {
+    font-size: 32px;
+    color: #093d7b;
+    margin-bottom: 40px;
+    font-weight: bold;
+    position: relative;
+}
+
+
+
+
+/* ================= VIDEO GRID ================= */
+.video-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.tiktok-video {
+    flex: 1 1 325px;
+    max-width: 325px;
+}
+
+.tiktok-video iframe,
+.tiktok-video blockquote {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background-color: #093d7b;
+    padding: 40px 0;
+    color: #fff;
+    margin-top: 40px;
+}
+
+.footer-col {
+    width: 50%;
+    padding: 0 15px;
+    position: relative;
+}
+
+.footer-col h4 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    position: relative;
+}
+
+.footer-col h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 50px;
+    height: 2px;
+    background-color: #e91e63; /* წითელი ხაზები */
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: #fff;
+}
+
+.social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* WhatsApp button pulse */
+.whatsapp-btn {
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .video-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-col {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .logo11 {
+        width: 80px;
+    }
+}
+
+@media (max-width: 500px) {
+    .logo11 {
+        width: 70px;
+    }
+
+    .nav ul li a {
+        font-size: 14px;
+    }
+
+    .videos-section {
+        padding: 40px 10px;
+    }
+}
